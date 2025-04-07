@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- ========== 1) HERO SECTION ========== -->
+  <div class="hero-section d-flex flex-column justify-content-center">
+    <div class="mb-3 classmate-logo">
+      CLASS<span>MATE</span>
+    </div>
+    
+    <div class="container position-relative">
+      <div class="row">
+        <!-- Linke Spalte (Text + Buttons) -->
+         <div class="col-md-6 d-flex flex-column justify-content-center py-5">
+          <div class="hero-text">
+            <h1>Classroom Engagement</h1>
+            <p>learning is earning. Let’s have more fun to learn together with your classmates.</p>
+          </div>
+
+          <div class="mt-4">
+            <button class="btn btn-success me-2">Get Started</button>
+          </div>
+        </div>
+
+        <!-- Rechte Spalte (weißes Polygon) -->
+        <div class="col-md-6 hero-right d-flex flex-column">
+          <!-- Icons (unverändert, absolut positioniert) -->
+          <img src="/images/smiley.png" alt="Smiley" class="icon-smiley"/>
+          <img src="/images/crown.png" alt="Trophy" class="icon-trophy"/>
+          <img src="/images/rocket.png" alt="Rocket" class="icon-rocket"/>
+
+          <!-- Avatar-Container: Nimmt den verfügbaren Platz ein und zentriert den Grid-Inhalt -->
+          <div class="avatar-container flex-grow-1 d-flex justify-content-center align-items-center">
+            <div class="container">
+              <!-- Erste Reihe -->
+              <div class="row">
+                <div class="col-4 text-center">
+                  <img src="images/821e39a75a2e2a7e732e9bdc4bb91a504ee198a4e435084fc0f736e31721cfa01a52e21e0588dffa6177d0be3768800dd8a88776ec2567de7aac70_1280.jpg" alt="Avatar1" class="circle-avatar"/>
+                  <div class="xp-label">1.2k xp</div>
+                </div>
+                
+                <div class="col-4 text-center">
+                  <img src="images/d80d9155c11020c52415dab470a1921c22c9d5224c3647694c5d25ba5b053b696b0df12bb923a9594b16510adbcedd8025d052138d267c89d1c5cc_1280.jpg" alt="Avatar2" class="circle-avatar"/>
+                  <div class="xp-label">1.5k xp</div>
+                </div>
+                
+                <div class="col-4 text-center">
+                  <img src="images/dab0bf599c6e53029c2819d7a382cd90713d36cdb8e1e154fe64a6663e42d4c29e458bd03bedcd8c65468827413490ca7c26704131365a8b502d72_1280.jpg" alt="Avatar3" class="circle-avatar"/>
+                  <div class="xp-label">900 xp</div>
+                </div>
+              </div>
+              
+              <!-- Zweite Reihe -->
+              <div class="row mt-3">
+                <div class="col-4 text-center">
+                  <img src="images/e4c7921271170f4a39f772ebd79eb8bfd966d4c68b2797eca3d8363842d307aee9b0e582f357e95732096df98e7bf075a7f4fc17223e491f2beaea_1280.jpg" alt="Avatar4" class="circle-avatar"/>
+                  <div class="xp-label">1.3k xp</div>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="images/photo-1463453091185-61582044d556.jpeg" alt="Avatar5" class="circle-avatar"/>
+                  <div class="xp-label">1.1k xp</div>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="images/photo-1494790108377-be9c29b29330.jpeg" alt="Avatar6" class="circle-avatar"/>
+                  <div class="xp-label">950 xp</div>
+                </div>
+              </div>
+              
+              <!-- Dritte Reihe -->
+              <div class="row mt-3">
+                <div class="col-4 text-center">
+                  <img src="images/photo-1524504388940-b1c1722653e1.jpeg" alt="Avatar7" class="circle-avatar"/>
+                  <div class="xp-label">1.4k xp</div>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Avatar8" class="circle-avatar"/>
+                  <div class="xp-label">1.2k xp</div>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar9" class="circle-avatar"/>
+                  <div class="xp-label">1.0k xp</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Button-Gruppe am unteren Rand der weißen Fläche -->
+          <div class="button d-flex justify-content-center align-items-center py-5">
+            <button class="btn btn-warning me-2"><a href="/signup" class="text-decoration-none text-white">Join Us</a></button>
+            <button class="btn btn-success"><a href="/login" class="text-decoration-none text-white">Login</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="section-hr"/>
+  <!-- ========== 2) AGENDA SECTION ========== -->
+  <section class="agenda-section">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h2 class="agenda-title">BIF Informatik Dual L3</h2>
+          <p>Today's Agenda</p>
+
+          <!-- Buch-Icon -->
+          <div class="mb-4">
+            <img src="https://img.icons8.com/color/96/book.png" alt="Book Icon"/>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Buttons/Boxen für Themen -->
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-6 col-lg-4">
+          <div class="agenda-card btn-agenda-1">Mathematik für CS 2</div>
+          <div class="agenda-card btn-agenda-2">Algorithmen und Datenstrukturen</div>
+          <div class="agenda-card btn-agenda-3">IT Projektarbeit</div>
+          <div class="agenda-card btn-agenda-4">C++</div>
+          <div class="agenda-card btn-agenda-5">Web Programmierung</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-hr" />
+  <!-- ========== 3) LEADERBOARD SECTION ========== -->
+  <section class="leaderboard-section">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <!-- Optional: Sterne-Icons -->
+          <div class="mb-3">
+            <img src="https://img.icons8.com/emoji/48/star-emoji.png" alt="Star1" class="me-2"/>
+            <img src="https://img.icons8.com/emoji/48/star-emoji.png"alt="Star2" class="me-2"/>
+            <img src="https://img.icons8.com/emoji/48/star-emoji.png"alt="Star3" class="me-2"/>
+          </div>
+          <h2 class="leaderboard-title">TIME TO THRIVE</h2>
+        </div>
+      </div>
+      
+      <!-- Beispielhafter Leaderboard-Eintrag -->
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-8 col-lg-6">
+          <!-- Top 1 -->
+          <div class="leaderboard-item">
+            <img src="images/photo-1494790108377-be9c29b29330.jpeg" alt="User1"/>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 80%"
+                aria-valuenow="80"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="xp-value">1020 xp</div>
+          </div>
+          
+          <!-- Top 2 -->
+          <div class="leaderboard-item">
+            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="User2"/>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 78%"
+                aria-valuenow="78"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="xp-value">1000 xp</div>
+          </div>
+          
+          <!-- Top 3 -->
+          <div class="leaderboard-item">
+            <img 
+              src="images/dab0bf599c6e53029c2819d7a382cd90713d36cdb8e1e154fe64a6663e42d4c29e458bd03bedcd8c65468827413490ca7c26704131365a8b502d72_1280.jpg"
+              alt="User3"
+            />
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 77%"
+                aria-valuenow="77"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="xp-value">999 xp</div>
+          </div>
+          
+          <!-- Top 4 -->
+          <div class="leaderboard-item">
+            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="User4"/>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 70%"
+                aria-valuenow="70"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="xp-value">868 xp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Bootstrap JS + Popper (für v5) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
