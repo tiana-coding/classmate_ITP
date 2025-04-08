@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gamify Kalender</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📅 Gamify Kalender</h1>
+
+  <div id="form">
+    <input type="text" id="title" placeholder="Titel" />
+    <input type="date" id="date" />
+    <input type="text" id="desc" placeholder="Beschreibung (optional)" />
+    <button id="addEvent">➕ Event hinzufügen</button>
+  </div>
+
+  <div id="calendar"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
