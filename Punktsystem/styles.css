@@ -1,0 +1,99 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f4f8;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 700px;
+    background: white;
+    border-radius: 15px;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+#leaderboard li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+#point-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+#tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.task-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fafafa;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.feedback {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.feedback.error {
+    background-color: #dc3545;
+}
+
+.reset-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.reset-button button {
+    background-color: #dc3545; 
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.reset-button button:hover {
+    background-color: #b02a37;
+}
