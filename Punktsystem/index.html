@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamification Lernplattform</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Rangliste</h1>
+        <ul id="leaderboard"></ul>
+
+        <h2>Punkte vergeben</h2>
+        <div id="point-buttons">
+             <!-- Buttons werden dynamisch per JavaScript erzeugt -->
+        </div>
+
+        <h2>Abgabe simulieren</h2>
+        <div id="tasks-list">
+            <!-- Aufgaben werden hier dynamisch angezeigt -->
+        </div>
+
+        <!-- Reset Button -->
+        <h2>System zurücksetzen</h2>
+        <div class="reset-button">
+            <button onclick="resetAllData()">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>  
+</body>
+</html>

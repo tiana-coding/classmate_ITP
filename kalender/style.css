@@ -1,0 +1,88 @@
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 2rem;
+    background: #0b1f3a; 
+    color: #f4f4f4;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  #form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  #form input, #form button {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  #form input {
+    background: #ffffff;
+    color: #000;
+  }
+  
+  #form button {
+    background: #1cc88a;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  #form button:hover {
+    background: #17a673;
+  }
+  
+  #calendar {
+    max-width: 1000px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+ 
+  .fc .fc-toolbar-title {
+    font-size: 1.6rem;
+    color: #0b1f3a;
+  }
+  
+  .fc .fc-button {
+    background: #1cc88a;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+  
+  .fc .fc-button:hover {
+    background: #17a673;
+  }
+  
+  .fc .fc-daygrid-event {
+    border-radius: 6px;
+    padding: 2px 4px;
+    font-size: 0.85rem;
+  }
+  
+  .fc .fc-daygrid-day-number {
+    color: #0b1f3a;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,84 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+    let savedEvents = JSON.parse(localStorage.getItem('events') || '[]');
+  
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'de',
+      editable: true,
+      eventResizableFromStart: true,
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listWeek'
+      },
+      events: savedEvents,
+  
+      eventClick: function(info) {
+        const confirmDelete = confirm(`📌 ${info.event.title}\n\n${info.event.extendedProps.description || 'Keine Beschreibung'}\n\nLöschen?`);
+        if (confirmDelete) {
+          info.event.remove();
+          savedEvents = savedEvents.filter(e => !(e.title === info.event.title && e.start === info.event.startStr));
+          localStorage.setItem('events', JSON.stringify(savedEvents));
+        }
+      },
+  
+      eventDrop: function(info) {
+        updateEvent(info.event);
+      },
+  
+      eventResize: function(info) {
+        updateEvent(info.event);
+      },
+  
+      eventDidMount: function(info) {
+        if (info.event.extendedProps.description) {
+          info.el.setAttribute('title', info.event.extendedProps.description);
+        }
+      }
+    });
+  
+    calendar.render();
+  
+    document.getElementById('addEvent')?.addEventListener('click', () => {
+      const title = document.getElementById('title').value;
+      const date = document.getElementById('date').value;
+      const desc = document.getElementById('desc').value;
+  
+      if (!title || !date) {
+        alert('Titel und Datum sind erforderlich!');
+        return;
+      }
+  
+      const newEvent = {
+        title,
+        start: date,
+        description: desc,
+        color: getColorByFach(title)
+      };
+  
+      calendar.addEvent(newEvent);
+      savedEvents.push(newEvent);
+      localStorage.setItem('events', JSON.stringify(savedEvents));
+  
+      document.getElementById('title').value = '';
+      document.getElementById('date').value = '';
+      document.getElementById('desc').value = '';
+    });
+  
+    function updateEvent(event) {
+      savedEvents = savedEvents.map(ev =>
+        ev.title === event.title ? { ...ev, start: event.startStr, end: event.endStr || null } : ev
+      );
+      localStorage.setItem('events', JSON.stringify(savedEvents));
+    }
+  
+    function getColorByFach(titel) {
+      titel = titel.toLowerCase();
+      if (titel.includes('mathe')) return '#4e73df';      // Blau
+      if (titel.includes('it') || titel.includes('projekt')) return '#1cc88a';  // Grün
+      if (titel.includes('deutsch')) return '#e74a3b';    // Rot
+      return '#858796'; // Grau
+    }
+  });
+  
