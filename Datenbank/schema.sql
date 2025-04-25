@@ -130,3 +130,50 @@ CREATE TABLE IF NOT EXISTS feedback (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (teacher_id) REFERENCES users(id)
 );
+
+-- =============================================================================
+-- Zusätzliche Tabellen einfügen – 26.04.2025
+-- =============================================================================
+
+-- 1. Protokollierung einzelner Punkteänderungen
+CREATE TABLE IF NOT EXISTS point_logs (
+    id            INT PRIMARY KEY AUTO_INCREMENT,
+    user_id       INT NOT NULL,
+    task_id       INT,
+    points_delta  INT NOT NULL,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (task_id) REFERENCES tasks(id)
+);
+
+-- 2. Kommentare zu geteilten Materialien
+CREATE TABLE IF NOT EXISTS shared_material_comments (
+    id            INT PRIMARY KEY AUTO_INCREMENT,
+    material_id   INT NOT NULL,
+    user_id       INT NOT NULL,
+    comment_text  TEXT,
+    created_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (material_id) REFERENCES shared_materials(id),
+    FOREIGN KEY (user_id)     REFERENCES users(id)
+);
+
+-- 3. Bewertungen für geteilte Materialien
+CREATE TABLE IF NOT EXISTS shared_material_ratings (
+    id            INT PRIMARY KEY AUTO_INCREMENT,
+    material_id   INT NOT NULL,
+    user_id       INT NOT NULL,
+    rating_value  INT,
+    created_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (material_id) REFERENCES shared_materials(id),
+    FOREIGN KEY (user_id)     REFERENCES users(id)
+);
+
+-- 4. Individuelle Lernziele der Benutzer
+CREATE TABLE IF NOT EXISTS user_goals (
+    id            INT PRIMARY KEY AUTO_INCREMENT,
+    user_id       INT NOT NULL,
+    goal_type     VARCHAR(100),
+    target_value  INT,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
