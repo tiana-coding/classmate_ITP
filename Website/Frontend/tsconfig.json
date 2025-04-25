@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "es2020",
+      "rootDir": ".",
+      "outDir": "../js/client",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": [
+      "ts/modules/**/*.ts",
+      "ts/environments/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.spec.ts"
+    ]
+  }
+  
