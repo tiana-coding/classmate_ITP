@@ -1,24 +1,36 @@
 {
   "name": "classmate_itp",
   "version": "1.0.0",
-  "description": "Backend für ClassMate ITP",
+  "description": "Fullstack für ClassMate ITP",
   "main": "Website/js/server/app.js",
   "scripts": {
-    "dev":   "ts-node-dev --respawn --transpile-only src/app.ts",
-    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only Website/backend/src/app.ts",
+    "build:frontend": "tsc -p Website/frontend/tsconfig.json",
+    "build:backend": "tsc -p Website/backend/tsconfig.json",
+    "build": "npm run build:frontend && npm run build:backend",
     "start": "node Website/js/server/app.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@angular/common": "^19.2.8",
+    "@angular/compiler": "^19.2.8",
+    "@angular/core": "^19.2.8",
+    "@angular/forms": "^19.2.8",
+    "@angular/platform-browser": "^19.2.8",
+    "@angular/platform-browser-dynamic": "^19.2.8",
+    "@angular/router": "^19.2.8",
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.14.0"
+    "mysql2": "^3.14.0",
+    "rxjs": "^7.8.2",
+    "zone.js": "^0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.9",
     "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.2",

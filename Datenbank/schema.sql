@@ -179,3 +179,5 @@ CREATE TABLE IF NOT EXISTS user_goals (
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+
