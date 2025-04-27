@@ -12,13 +12,20 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.use('/js/client', express_1.default.static(path_1.default.join(__dirname, '../../../../js/client')));
-app.use('/styles', express_1.default.static(path_1.default.join(__dirname, '../../../frontend/styles')));
-app.use('/assets/images', express_1.default.static(path_1.default.join(__dirname, '../../../frontend/assets/images')));
-app.use(express_1.default.static(path_1.default.join(__dirname, '../../../frontend/html')));
-app.get('/', (_req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../../../frontend/html/index.html'));
-});
+// 1) Client‐JS (signup.js & login.js)
+app.use('/js/client/modules/auth', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'js', 'client', 'modules', 'auth')));
+// 2) Styles
+app.use('/styles', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'styles')));
+// 3) Images
+app.use('/assets/images', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'assets', 'images')));
+// 4) HTML-Dateien
+app.use(express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'html')));
+// Typisierter Root-Handler
+const serveIndex = (_req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '..', '..', 'frontend', 'html', 'index.html'));
+};
+app.get('/', serveIndex);
+// API-Routen
 app.use('/api', routes_1.default);
 app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok' });

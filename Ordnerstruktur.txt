@@ -1,82 +1,36 @@
 classmate_ITP/
-├─ .dist/
-├─ .git/
-├─ Datenbank/
-├─ kalender/
+├─ backend/
+│  ├─ ts/
+│  │  ├─ controllers/
+│  │  ├─ app.ts
+│  │  ├─ db.ts
+│  │  └─ routes.ts
+│  ├─ js/
+│  │  ├─ controllers/
+│  │  ├─ app.js
+│  │  ├─ db.js
+│  │  └─ routes.js
+│  ├─ .env
+│  └─ tsconfig.json
+├─ frontend/
+│  ├─ ts/
+│  │  └─ modules/
+│  │     ├─ auth/
+│  │     ├─ core/
+│  │     ├─ feedback/
+│  │     ├─ forum/
+│  │     ├─ gamification/
+│  │     ├─ progress/
+│  │     ├─ shared/
+│  │     └─ tasks/
+│  ├─ js/
+│  │  └─ modules/
+│  │     └─ auth/
+│  ├─ html/
+│  ├─ styles/
+│  └─ assets/
+│     └─ images/
 ├─ node_modules/
-├─ Protokolle/
-├─ Punktsystem/
-├─ Website/
-│  ├─ backend/
-│  │  ├─ node_modules/
-│  │  ├─ ts/
-│  │  │  ├─ app.ts
-│  │  │  ├─ db.ts
-│  │  │  ├─ routes.ts
-│  │  │  └─ controllers/
-│  │  │     └─ authController.ts
-│  │  ├─ .env
-│  │  └─ tsconfig.json
-│  ├─ frontend/
-│  │  ├─ assets/
-│  │  │  └─ images/
-│  │  │     ├─ 821.jpg
-│  │  │     ├─ crown.png
-│  │  │     ├─ dab.jpg
-│  │  │     ├─ d80.jpg
-│  │  │     ├─ e4c.jpg
-│  │  │     ├─ men-29.jpg
-│  │  │     ├─ photo-1463453091185-61582044d556.jpeg
-│  │  │     ├─ photo-1494790108377-be9c29b29330.jpeg
-│  │  │     ├─ photo-1524504388940-b1c1722653e1.jpeg
-│  │  │     ├─ rocket.png
-│  │  │     ├─ smiley.png
-│  │  │     ├─ star-emoji.png
-│  │  │     └─ women-65.jpg
-│  │  ├─ html/
-│  │  │  ├─ dashboard.html
-│  │  │  ├─ feedback.html
-│  │  │  ├─ forum.html
-│  │  │  ├─ gamification.html
-│  │  │  ├─ index.html
-│  │  │  ├─ login.html
-│  │  │  ├─ progress.html
-│  │  │  ├─ sharing.html
-│  │  │  ├─ signup.html
-│  │  │  ├─ tasks.html
-│  │  │  └─ weekly-plan.html
-│  │  ├─ styles/
-│  │  │  └─ style.css
-│  │  ├─ ts/
-│  │  │  ├─ environments/
-│  │  │  │  └─ environment.ts
-│  │  │  └─ modules/
-│  │  │     ├─ auth/
-│  │  │     │  ├─ login.ts
-│  │  │     │  └─ signup.ts
-│  │  │     ├─ core/
-│  │  │     ├─ feedback/
-│  │  │     ├─ forum/
-│  │  │     ├─ gamification/
-│  │  │     ├─ progress/
-│  │  │     ├─ shared/
-│  │  │     └─ tasks/
-│  │  └─ tsconfig.json
-│  └─ js/
-│     ├─ client/
-│     │  └─ modules/
-│     │     └─ auth/
-│     │        ├─ login.js
-│     │        └─ signup.js
-│     └─ server/
-│        ├─ app.js
-│        ├─ db.js
-│        ├─ routes.js
-│        └─ controllers/
-│           └─ authController.js
-├─ .gitignore
-├─ Ordnerstruktur.txt
 ├─ package.json
 ├─ package-lock.json
 └─ README.md
-
