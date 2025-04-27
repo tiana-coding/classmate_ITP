@@ -1,14 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('signup');
-  if (!form) return;
+  if (!(form instanceof HTMLFormElement)) return;
+
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+
+  // Null‐Checks und konkrete Typisierung
+  if (
+    !(nameInput instanceof HTMLInputElement) ||
+    !(emailInput instanceof HTMLInputElement) ||
+    !(passwordInput instanceof HTMLInputElement) ||
+    !(confirmPasswordInput instanceof HTMLInputElement)
+  ) {
+    console.error('Form inputs not found or of wrong type');
+    return;
+  }
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
-
-    const nameInput            = document.getElementById('name');
-    const emailInput           = document.getElementById('email');
-    const passwordInput        = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
 
     const username        = nameInput.value.trim();
     const email           = emailInput.value.trim();
@@ -28,21 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: email,    // wie dein Backend erwartet
-          password,
-          role:     'student'
-        })
+        body: JSON.stringify({ username: email, password, role: 'student' })
       });
 
       const data = await res.json();
       console.log('Response Register:', res.status, data);
 
       if (!res.ok) {
-        alert(
-          'Registrierung fehlgeschlagen:\n' +
-          (data.error || res.statusText)
-        );
+        alert('Registrierung fehlgeschlagen:\n' + (data.error || res.statusText));
         return;
       }
 
