@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aufgaben – ClassMate</title>
+  <link href="../styles/style.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="hero-section">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand classmate-logo" href="index.html">CLASS<span>MATE</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="tasks.html">Tasks</a></li>
+        <li class="nav-item"><a class="nav-link" href="progress.html">Progress</a></li>
+        <li class="nav-item"><a class="nav-link" href="forum.html">Forum</a></li>
+        <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link" href="gamification.html">Gamification</a></li>
+        <li class="nav-item"><a class="btn btn-danger ms-3" href="login.html">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Inhalt -->
+<div class="container py-5 text-center">
+  <h1 class="hero-text mb-5">Alle Aufgaben</h1>
+
+  <div id="tasksGrid" class="row g-4">
+    <!-- Aufgaben werden hier dynamisch eingefügt -->
+  </div>
+</div>
+
+<script>
+  async function loadTasks() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const res = await fetch('/api/tasks', {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
+
+    if (res.status === 401 || res.status === 403) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const tasks = await res.json();
+    const grid = document.getElementById('tasksGrid');
+
+    tasks.forEach((task, index) => {
+      const colorClass = `btn-agenda-${(index % 5) + 1}`;
+
+      const card = `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="agenda-card ${colorClass}">
+            <h5>${task.title}</h5>
+            <p>${task.description || 'Keine Beschreibung.'}</p>
+            <small>${task.points || 0} XP</small>
+          </div>
+        </div>
+      `;
+      grid.innerHTML += card;
+    });
+  }
+
+  loadTasks();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
