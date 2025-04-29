@@ -1,0 +1,24 @@
+<div class="calendar-component">
+    <!-- View Controls -->
+    <div class="calendar-controls d-flex justify-content-between align-items-center mb-3">
+        <div class="btn-group" role="group" aria-label="Kalendar Ansicht">
+            <button type="button" class="btn btn-outline-warning" data-view="customDay">
+                <i class="bi bi-calendar-day"></i> Tag
+            </button>
+            <button type="button" class="btn btn-outline-warning" data-view="custom3Day">
+                <i class="bi bi-calendar3"></i> 3 Tage
+            </button>
+            <button type="button" class="btn btn-outline-warning" data-view="customWeek">
+                <i class="bi bi-calendar-week"></i> Woche
+            </button>
+        </div>
+        <button id="refreshCalendar" class="btn btn-light" title="Aktualisieren">
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </div>
+
+    <!-- Calendar Container -->
+    <div class="calendar-container">
+        <div id="calendar" class="compact-calendar"></div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head id="header-placeholder"></head>
+<body class="hero-section">
+    <div id="navbar-placeholder"></div>
+    <div class="container py-4">
+        <!-- Forum Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-white">Forum</h1>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#newQuestionModal">
+                <i class="bi bi-plus-circle"></i> Neue Frage stellen
+            </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Fragen durchsuchen...">
+                    <button class="btn btn-warning" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="sortSelect">
+                    <option value="newest">Neueste zuerst</option>
+                    <option value="popular">Beliebteste zuerst</option>
+                    <option value="unanswered">Unbeantwortet</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Questions List -->
+        <div class="questions-container" id="questionsContainer">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- New Question Modal -->
+    <div class="modal fade" id="newQuestionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Neue Frage stellen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="questionForm">
+                        <div class="mb-3">
+                            <label for="questionTitle" class="form-label">Titel</label>
+                            <input type="text" class="form-control" id="questionTitle" required
+                                   placeholder="Deine Frage in einem Satz">
+                        </div>
+                        <div class="mb-3">
+                            <label for="questionDetails" class="form-label">Details</label>
+                            <textarea class="form-control" id="questionDetails" rows="4" required
+                                    placeholder="Beschreibe deine Frage ausführlich..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="questionTags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="questionTags"
+                                   placeholder="z.B. mathe, hausaufgaben, hilfe">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                    <button type="submit" form="questionForm" class="btn btn-warning">Frage stellen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { loadComponents } from '../js/utils/loadComponents.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await loadComponents([
+                    { id: 'header-placeholder', component: 'header' },
+                    { id: 'navbar-placeholder', component: 'navbar' }
+                ]);
+                document.title = 'Forum – ClassMate';
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+    <script type="module" src="../js/modules/forum/forum.module.js"></script>
+</body>
+</html>

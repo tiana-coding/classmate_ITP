@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgaben – ClassMate</title>
+    <link href="../styles/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="hero-section">
+    <div id="navbar-placeholder"></div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="hero-text text-center mb-5">Alle Aufgaben</h1>
+
+                <!-- File Upload Section -->
+                <div class="card bg-white mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Hausaufgaben hochladen</h5>
+                        <form id="uploadForm" class="mb-3">
+                            <div class="mb-3">
+                                <label for="fileUpload" class="form-label">Wähle eine Datei</label>
+                                <input type="file" class="form-control" id="fileUpload" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Beschreibung</label>
+                                <textarea class="form-control" id="description" rows="2" 
+                                        placeholder="Kurze Beschreibung der Hausaufgabe..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="bi bi-upload"></i> Hochladen
+                                </button>
+                            </div>
+                        </form>
+                        <div id="uploadProgress" class="progress d-none">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
+                                role="progressbar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks Grid -->
+                <div id="tasksGrid" class="row g-4">
+                    <!-- Tasks dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { loadComponents } from '../js/utils/loadComponents.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await loadComponents([
+                    { id: 'navbar-placeholder', component: 'navbar' }
+                ]);
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        });
+    </script>
+</body>
+</html>

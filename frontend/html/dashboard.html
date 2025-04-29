@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head id="header-placeholder"></head>
+<body class="hero-section">
+    <div id="navbar-placeholder"></div>
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-6">Willkommen zurück, <span id="userName">Student</span>!</h1>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Neue Klasse erstellen</h5>
+                        <p class="card-text">Erstelle eine neue Klasse für deine Schüler.</p>
+                        
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createClassModal">
+                            <i class="bi bi-plus-circle"></i> Klasse erstellen
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Klasse beitreten</h5>
+                        <p class="card-text">Einer bestehenden Klasse beitreten.</p>
+                        <!-- Change button from btn-success to btn-warning -->
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#joinClassModal">
+                            <i class="bi bi-box-arrow-in-right"></i> Beitreten
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Termine</h5>
+                        <p class="card-text">Deine nächsten Termine im Überblick.</p>
+                        <!-- Change button from btn-info to btn-warning -->
+                        <a href="calendar.html" class="btn btn-warning">
+                            <i class="bi bi-calendar3"></i> Zum Kalender
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-8">
+                <h2 class="h4 mb-3 text-white">Meine Klassen</h2>
+                <div class="row" id="classesContainer">
+                    <!-- Klassen werden hier dynamisch eingefügt -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Template -->
+    <template id="taskTemplate">
+        <div class="task-item mb-3 border-bottom pb-2">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h6 class="mb-1 task-title">Task Title</h6>
+                    <p class="mb-1 small text-muted task-class">Klassenname</p>
+                    <small class="text-danger task-due-date">Fällig: 01.05.2024</small>
+                </div>
+                <div>
+                    <span class="badge bg-success task-points">10 XP</span>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- In Create Class Modal -->
+    <div class="modal fade" id="createClassModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Neue Klasse erstellen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="Close modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createClassForm">
+                        <div class="mb-3">
+                            <label for="className" class="form-label">Klassenname</label>
+                            <input type="text" class="form-control" id="className" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="classDescription" class="form-label">Beschreibung</label>
+                            <textarea class="form-control" id="classDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                    <!-- Change button from btn-primary to btn-warning -->
+                    <button type="submit" form="createClassForm" class="btn btn-warning">Erstellen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- In Join Class Modal -->
+    <div class="modal fade" id="joinClassModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Klasse beitreten</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="Close modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="joinClassForm">
+                        <div class="mb-3">
+                            <label for="classCode" class="form-label">Klassencode</label>
+                            <input type="text" class="form-control" id="classCode" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                    <!-- Change button from btn-success to btn-warning -->
+                    <button type="submit" form="joinClassForm" class="btn btn-warning">Beitreten</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { loadComponents } from '../js/utils/loadComponents.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await loadComponents([
+                    { id: 'header-placeholder', component: 'header' },
+                    { id: 'navbar-placeholder', component: 'navbar' }
+                ]);
+                document.title = 'Dashboard – ClassMate';
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+    <script type="module" src="../js/modules/dashboard/dashboard.module.js"></script>
+</body>
+</html>
