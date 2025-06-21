@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head id="header-placeholder"></head>
+<body class="profile-page hero-section">
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <div class="container py-5">
+    <div class="row">
+      <!-- Sidebar: User Info -->
+      <div class="col-md-4 mb-4">
+        <div class="card profile-card text-center p-4 bg-white">
+          <i class="bi bi-person-circle profile-avatar text-secondary"></i>
+          <h4 class="mb-1">@if24xxxx</h4>
+          <p class="text-muted">Max Mustermann</p>
+          <div class="text-start mb-4">
+            <p class="mb-1"><strong>Semester:</strong> X</p>
+            <p class="mb-1"><strong>Verband:</strong> X</p>
+            <p class="mb-1"><strong>Gruppe:</strong> X</p>
+          </div>
+          <a href="edit_profile.html" class="btn btn-warning">Profil bearbeiten</a>
+        </div>
+      </div>
+
+      <!-- Main Content: Courses & Certificates -->
+      <div class="col-md-8">
+        <div class="card mb-4 bg-white p-4">
+          <h5 class="section-title">Offene Aufgaben</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              PROGR Fight Club
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              ALGOS Übungsblatt 2
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              ITP Sprint 4 Review
+            </li>
+          </ul>
+          <a href="#" class="d-block text-decoration-none mt-2">Alle anzeigen »</a>
+        </div>
+
+        <div class="card bg-white p-4">
+          <h5 class="section-title">Abgeschlossene Aufgaben</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              ALGOS Übungsblatt 1
+              <a href="#" class="link-primary">Abgabe</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              PROGR Oasencrawler
+              <a href="#" class="link-primary">Abgabe</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { loadComponents } from '../js/utils/loadComponents.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      loadComponents([
+        { id: 'header-placeholder', component: 'header' },
+        { id: 'navbar-placeholder', component: 'navbar' }
+      ]);
+    });
+  </script>
+</body>
+</html>

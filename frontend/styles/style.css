@@ -351,4 +351,14 @@ body {
         height: 500px;
     }
 }
+
+/* Profile Styles*/
+
+.profile-avatar {
+  font-size: 8rem;
+  color: #6c757d;
+  display: block;
+  margin: 0 auto 1rem;
+  line-height: 1;
+}
   
