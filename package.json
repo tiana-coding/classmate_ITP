@@ -2,13 +2,13 @@
   "name": "classmate_itp",
   "version": "1.0.0",
   "description": "Fullstack für ClassMate ITP",
-  "main": "Website/js/server/app.js",
+  "main": "backend/js/app.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only Website/backend/src/app.ts",
-    "build:frontend": "tsc -p Website/frontend/tsconfig.json",
-    "build:backend": "tsc -p Website/backend/tsconfig.json",
-    "build": "npm run build:frontend && npm run build:backend",
-    "start": "node Website/js/server/app.js"
+    "start": "node backend/js/app.js",
+    "dev": "ts-node-dev --respawn --transpile-only --project backend/tsconfig.json backend/ts/app.ts",
+    "build:backend": "tsc -p backend/tsconfig.json",
+    "build:frontend":"tsc -p frontend/tsconfig.json",
+    "build": "npm run build:frontend && npm run build:backend"
   },
   "dependencies": {
     "@angular/common": "^19.2.8",
@@ -23,6 +23,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
     "mysql2": "^3.14.0",
     "rxjs": "^7.8.2",
     "zone.js": "^0.15.0"
@@ -33,6 +34,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.13",
     "@types/node": "^22.15.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"

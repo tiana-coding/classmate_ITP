@@ -1,7 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b1f3a; 
+  color: #f4f4f4;
+ 
 }
 
 .classmate-logo {
@@ -172,14 +175,6 @@ section {
   min-width: 60px;
   text-align: right;
 }
-
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 2rem;
-    background: #0b1f3a; 
-    color: #f4f4f4;
-  }
   
   h1 {
     text-align: center;

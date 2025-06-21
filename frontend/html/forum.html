@@ -2,7 +2,7 @@
 <html lang="de">
 <head id="header-placeholder"></head>
 <body class="hero-section">
-    <div id="navbar-placeholder"></div>
+  <div id="navbar-placeholder"></div>
     <div class="container py-4">
         <!-- Forum Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -40,34 +40,40 @@
     <!-- New Question Modal -->
     <div class="modal fade" id="newQuestionModal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Neue Frage stellen</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h5 class="modal-title">Neue Frage stellen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- enctype für Datei-Upload -->
+                <form id="questionForm" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="questionTitle" class="form-label">Titel</label>
+                    <input type="text" class="form-control" id="questionTitle" name="title" required
+                        placeholder="Deine Frage in einem Satz">
                 </div>
-                <div class="modal-body">
-                    <form id="questionForm">
-                        <div class="mb-3">
-                            <label for="questionTitle" class="form-label">Titel</label>
-                            <input type="text" class="form-control" id="questionTitle" required
-                                   placeholder="Deine Frage in einem Satz">
-                        </div>
-                        <div class="mb-3">
-                            <label for="questionDetails" class="form-label">Details</label>
-                            <textarea class="form-control" id="questionDetails" rows="4" required
-                                    placeholder="Beschreibe deine Frage ausführlich..."></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="questionTags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" id="questionTags"
-                                   placeholder="z.B. mathe, hausaufgaben, hilfe">
-                        </div>
-                    </form>
+                <div class="mb-3">
+                    <label for="questionDetails" class="form-label">Details</label>
+                    <textarea class="form-control" id="questionDetails" name="details" rows="4" required
+                            placeholder="Beschreibe deine Frage ausführlich..."></textarea>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-                    <button type="submit" form="questionForm" class="btn btn-warning">Frage stellen</button>
+                <div class="mb-3">
+                    <label for="questionTags" class="form-label">Tags</label>
+                    <input type="text" class="form-control" id="questionTags" name="tags"
+                        placeholder="z.B. mathe, hausaufgaben, hilfe">
                 </div>
+                <!-- NEU: Bild-Upload -->
+                <div class="mb-3">
+                    <label for="questionImage" class="form-label">Bild (optional)</label>
+                    <input type="file" class="form-control" id="questionImage" name="image" accept="image/*">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                <button type="submit" form="questionForm" class="btn btn-warning">Frage stellen</button>
+            </div>
             </div>
         </div>
     </div>
@@ -75,19 +81,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module">
         import { loadComponents } from '../js/utils/loadComponents.js';
-        
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await loadComponents([
-                    { id: 'header-placeholder', component: 'header' },
-                    { id: 'navbar-placeholder', component: 'navbar' }
-                ]);
-                document.title = 'Forum – ClassMate';
-            } catch (error) {
-                console.error('Error:', error);
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+        loadComponents([
+            { id: 'header-placeholder', component: 'header' },
+            { id: 'navbar-placeholder', component: 'navbar' }
+        ]);
         });
-    </script>
-    <script type="module" src="../js/modules/forum/forum.module.js"></script>
+  </script>
+  <script type="module" src="../js/modules/forum/forum.module.js"></script>
 </body>
 </html>
