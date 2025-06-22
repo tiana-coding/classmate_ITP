@@ -1,10 +1,10 @@
-import express, { Request, Response, RequestHandler } from 'express';
+import express, { Request, Response, RequestHandler, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 import authRoutes from './routes';
-import fs from 'fs'; // forum data
-import multer from 'multer'; // forum uploads
+import fs from 'fs';
+import multer from 'multer';
 
 dotenv.config();
 const app = express();
@@ -47,8 +47,7 @@ app.use(
   express.static(path.join(__dirname, '..', '..', 'frontend', 'html'))
 );
 
-// --- Forum Uploads statisch bereitstellen ---
-// URL: /uploads/forum/<filename>
+// Forum-Uploads
 app.use(
   '/uploads/forum',
   express.static(
@@ -56,84 +55,89 @@ app.use(
   )
 );
 
-// --- Forum: posts.json Pfad ---
-// __dirname ist hier euer '.../backend/js'-Ordner nach Build
+// Pfad zur posts.json
 const POSTS_FILE = path.resolve(__dirname, '..', 'data', 'posts.json');
 
-// Utility: lade Posts aus data/posts.json
-function loadPosts() {
-  try {
-    return JSON.parse(fs.readFileSync(POSTS_FILE, 'utf-8'));
-  } catch {
-    return [];
-  }
+// Helpers: load / save
+function loadPosts(): any[] {
+  try { return JSON.parse(fs.readFileSync(POSTS_FILE, 'utf-8')); }
+  catch { return []; }
 }
-// Utility: speichere Posts in data/posts.json
-function savePosts(posts: any[]) {
+function savePosts(posts: any[]): void {
   fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2));
 }
 
-// Multer konfigurieren für Datei-Upload nach frontend/assets/images/uploads/forum
+// Multer für Bild-Upload
 const forumStorage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(
-      null,
-      path.join(__dirname, '..', '..', 'frontend', 'assets', 'images', 'uploads', 'forum')
-    );
+    cb(null, path.join(__dirname, '..', '..', 'frontend', 'assets', 'images', 'uploads', 'forum'));
   },
   filename: (_req, file, cb) => {
-    const unique = Date.now() + '-' + file.originalname.replace(/\s+/g, '_');
-    cb(null, unique);
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '_'));
   }
 });
 const upload = multer({ storage: forumStorage });
 
-// --- Forum-API Endpunkte ---
-// GET /api/posts
-app.get('/api/posts', (_req: Request, res: Response) => {
-  const posts = loadPosts();
-  res.json(posts);
+// API: Forum
+app.get('/api/posts', (_req, res) => {
+  res.json(loadPosts());
 });
 
-// POST /api/posts  (Felder: title, details, tags, image)
-app.post(
-  '/api/posts',
-  upload.single('image'),
-  (req: Request, res: Response) => {
-    const { title, details, tags } = req.body;
-    const imageUrl = req.file ? `/uploads/forum/${req.file.filename}` : null;
+app.post('/api/posts', upload.single('image'), (req, res) => {
+  const { title, details, tags } = req.body;
+  const imageUrl = req.file ? `/uploads/forum/${req.file.filename}` : null;
+  const posts = loadPosts();
+  const newPost = {
+    id: Date.now(),
+    title,
+    details,
+    tags: tags ? tags.split(',').map((t:string)=>t.trim()) : [],
+    imageUrl,
+    createdAt: new Date().toISOString(),
+    likes: 0,
+    comments: [] as {author:string;text:string;createdAt:string}[]
+  };
+  posts.unshift(newPost);
+  savePosts(posts);
+  res.status(201).json(newPost);
+});
 
+app.put(
+  '/api/posts/:id/like',
+  (req: Request, res: Response, next: NextFunction) => {
     const posts = loadPosts();
-    const newPost = {
-      id: Date.now(),
-      title,
-      details,
-      tags: tags ? tags.split(',').map((t: string) => t.trim()) : [],
-      imageUrl,
-      createdAt: new Date().toISOString()
-    };
-
-    posts.unshift(newPost);
+    const post = posts.find(p => p.id === +req.params.id);
+    if (!post) return res.status(404).json({ error: 'Post nicht gefunden' });
+    post.likes++;
     savePosts(posts);
-    res.status(201).json(newPost);
+    return res.json({ likes: post.likes });
   }
 );
 
-// Typisierter Root-Handler für Index
-const serveIndex: RequestHandler = (_req: Request, res: Response) => {
-  res.sendFile(
-    path.join(__dirname, '..', '..', 'frontend', 'html', 'index.html')
-  );
+app.post(
+  '/api/posts/:id/comments',
+  (req: Request, res: Response, next: NextFunction) => {
+    const { author, text } = req.body;
+    if (!text) return res.status(400).json({ error: 'Kein Kommentartext' });
+    const posts = loadPosts();
+    const post = posts.find(p => p.id === +req.params.id);
+    if (!post) return res.status(404).json({ error: 'Post nicht gefunden' });
+    const comment = { author: author||'Anonym', text, createdAt: new Date().toISOString() };
+    post.comments.push(comment);
+    savePosts(posts);
+    return res.status(201).json(comment);
+  }
+);
+
+// Root-Handler
+const serveIndex: RequestHandler = (_req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'html', 'index.html'));
 };
 app.get('/', serveIndex);
 
-// API-Routen
+// Auth-Routes & Health
 app.use('/api', authRoutes);
-app.get('/api/health', (_req: Request, res: Response) => {
-  res.json({ status: 'ok' });
-});
+app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
-const PORT = parseInt(process.env.PORT || '3000', 10);
-app.listen(PORT, () => {
-  console.log(`🚀 Backend läuft auf http://localhost:${PORT}`);
-});
+const PORT = parseInt(process.env.PORT||'3000', 10);
+app.listen(PORT, () => console.log(`🚀 Backend läuft auf http://localhost:${PORT}`));

@@ -1,5 +1,16 @@
 [
   {
+    "id": 1750592833111,
+    "title": "Frage",
+    "details": "blablablablabla",
+    "tags": [
+      "mathe",
+      "test"
+    ],
+    "imageUrl": "/uploads/forum/1750592833109-Screenshot_2025-06-20_205215.png",
+    "createdAt": "2025-06-22T11:47:13.111Z"
+  },
+  {
     "id": 1750541558729,
     "title": "Test",
     "details": "test",
