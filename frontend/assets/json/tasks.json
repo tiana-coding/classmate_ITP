@@ -1,0 +1,99 @@
+// Statische Liste der Aufgaben inkl. lokaler PDFs und externer Links
+[
+  {
+    "id": 1,
+    "title": "Exercise 1: JavaScript Memory Game Implementation",
+    "description": "Vorlesung 01 Übung",
+    "dueDate": "2025-06-18",
+    "completed": true,
+    "externalUrl": "https://github.com/lukasrohatsch/webprogramming/tree/main/Lecture01/Exercise/templateExercise1"
+  },
+  {
+    "id": 2,
+    "title": "Exercise 2: Virtual Piano Game Implementation",
+    "description": "Vorlesung 02 Übung",
+    "dueDate": "2025-06-25",
+    "completed": false,
+    "externalUrl": "https://github.com/lukasrohatsch/webprogramming/tree/main/Lecture02/Exercise/templateExercise2"
+  },
+  {
+    "id": 3,
+    "title": "Programmieraufgabe 1 (ADS)",
+    "description": "Algorithmen und Datenstrukturen Labor Übungsblatt 1",
+    "dueDate": "2025-06-17",
+    "completed": true,
+    "documentUrl": "docs/Aufgaben/ADS_Programmieraufgabe1.pdf"
+  },
+  {
+    "id": 4,
+    "title": "Programmieraufgabe 2 (ADS)",
+    "description": "Algorithmen und Datenstrukturen Labor Übungsblatt 2",
+    "dueDate": "2025-06-24",
+    "completed": false,
+    "documentUrl": "docs/Aufgaben/ADS_Programmieraufgabe2.pdf"
+  },
+  {
+    "id": 5,
+    "title": "Übungsblatt 1 (ALGDAT)",
+    "description": "Algorithmen und Datenstrukturen Übungsblatt 1",
+    "dueDate": "2025-06-17",
+    "completed": true,
+    "documentUrl": "docs/Aufgaben/ALGODAT_Übungsblatt_01.pdf"
+  },
+  {
+    "id": 6,
+    "title": "Übungsblatt 2 (ALGDAT)",
+    "description": "Algorithmen und Datenstrukturen Übungsblatt 2",
+    "dueDate": "2025-06-24",
+    "completed": false,
+    "documentUrl": "docs/Aufgaben/ALGODAT_Übungsblatt_02.pdf"
+  },
+  {
+    "id": 7,
+    "title": "Übungsblatt 1 (GLINF)",
+    "description": "Formale Grundlagen der Informatik Übungsblatt 1",
+    "dueDate": "2025-06-16",
+    "completed": true,
+    "documentUrl": "docs/Aufgaben/GLINF_Übungsblatt1.pdf"
+  },
+  {
+    "id": 8,
+    "title": "Übungsblatt 2 (GLINF)",
+    "description": "Formale Grundlagen der Informatik Übungsblatt 2",
+    "dueDate": "2025-06-23",
+    "completed": false,
+    "documentUrl": "docs/Aufgaben/GLINF_Übungsblatt2.pdf"
+  },
+  {
+    "id": 9,
+    "title": "Übungsblatt 1 (MACS2)",
+    "description": "Mathematik für Computer Science 2 Übungsblatt 1",
+    "dueDate": "2025-06-18",
+    "completed": true,
+    "documentUrl": "docs/Aufgaben/MACS2_UE01.pdf"
+  },
+  {
+    "id": 10,
+    "title": "Übungsblatt 2 (MACS2)",
+    "description": "Mathematik für Computer Science 2 Übungsblatt 2",
+    "dueDate": "2025-06-25",
+    "completed": false,
+    "documentUrl": "docs/Aufgaben/MACS2_UE02.pdf"
+  },
+  {
+    "id": 11,
+    "title": "Oasencrawler (OOP Lab)",
+    "description": "Objektorientierte Programmierung Labor Übungsblatt 1",
+    "dueDate": "2025-06-12",
+    "completed": true,
+    "documentUrl": "docs/Aufgaben/Oasencrawler_1.pdf"
+  },
+  {
+    "id": 12,
+    "title": "Fight Club (OOP Lab)",
+    "description": "Objektorientierte Programmierung Labor Übungsblatt 2",
+    "dueDate": "2025-06-26",
+    "completed": false,
+    "documentUrl": "docs/Aufgaben/Fight Club_2.pdf"
+  }
+]
