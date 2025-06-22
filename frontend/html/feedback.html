@@ -2,65 +2,66 @@
 <html lang="de">
 <head id="header-placeholder"></head>
 <body class="hero-section">
-    <div id="navbar-placeholder"></div>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card bg-white">
-                    <div class="card-body">
-                        <h2 class="card-title mb-4">Feedback geben</h2>
-                        <form id="feedbackForm">
-                            <div class="mb-3">
-                                <label class="form-label">Bewertung</label>
-                                <div class="star-rating" id="starRating">
-                                    <i class="bi bi-star" data-rating="1"></i>
-                                    <i class="bi bi-star" data-rating="2"></i>
-                                    <i class="bi bi-star" data-rating="3"></i>
-                                    <i class="bi bi-star" data-rating="4"></i>
-                                    <i class="bi bi-star" data-rating="5"></i>
-                                </div>
-                                <input type="hidden" id="rating" name="rating" required>
-                            </div>
+  <!-- Navbar kommt automatisch per loadComponents() -->
+  <div id="navbar-placeholder"></div>
 
-                            <div class="mb-3">
-                                <label for="feedbackText" class="form-label">Dein Feedback</label>
-                                <textarea 
-                                    class="form-control" 
-                                    id="feedbackText" 
-                                    name="feedbackText" 
-                                    rows="4" 
-                                    placeholder="Beschreibe hier dein Feedback..."
-                                    required></textarea>
-                            </div>
-
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-warning">
-                                    <i class="bi bi-send"></i> Feedback senden
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card bg-white">
+          <div class="card-body">
+            <h2 class="card-title mb-4">Feedback geben</h2>
+            <form id="feedbackForm">
+              <!-- Stern-Rating -->
+              <div class="mb-3">
+                <label class="form-label">Bewertung</label>
+                <div id="starRating" class="d-flex gap-2">
+                    <label><input type="radio" name="rating" value="1" required> ⭐</label>
+                    <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
+                    <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
+                    <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
+                    <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
                 </div>
-            </div>
+              </div>
+
+
+              <!-- Freitext -->
+              <div class="mb-3">
+                <label for="feedbackText" class="form-label">Dein Feedback</label>
+                <textarea
+                  id="feedbackText"
+                  name="feedbackText"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Beschreibe hier dein Feedback..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-warning">
+                  <i class="bi bi-send"></i> Feedback senden
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-<!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module">
-        import { loadComponents } from '../js/utils/loadComponents.js';
-        
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await loadComponents([
-                    { id: 'header-placeholder', component: 'header' },
-                    { id: 'navbar-placeholder', component: 'navbar' }
-                ]);
-                document.title = 'Feedback – ClassMate';
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
-    <script type="module" src="../js/modules/feedback/feedback.module.js"></script>
+  </div>
+
+  <!-- Bootstrap & Deine Module -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { loadComponents } from '../js/utils/loadComponents.js';
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadComponents([
+        { id: 'header-placeholder', component: 'header' },
+        { id: 'navbar-placeholder', component: 'navbar' }
+      ]);
+      document.title = 'Feedback – ClassMate';
+    });
+  </script>
+  <script type="module" src="../js/modules/feedback/feedback.module.js"></script>
 </body>
 </html>

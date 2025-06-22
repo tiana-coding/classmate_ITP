@@ -6,7 +6,7 @@
     "outDir": "./js",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,      
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true
   },

@@ -1,32 +1,14 @@
 [
   {
-    "id": 1750603040768,
-    "title": "algos",
-    "details": "ich kenn mich hier nicht aus",
-    "tags": [
-      "hallo"
-    ],
-    "imageUrl": null,
-    "createdAt": "2025-06-22T14:37:20.768Z"
-  },
-  {
-    "id": 1750603009001,
-    "title": "mathe",
-    "details": "mathe",
-    "tags": [
-      "mathe"
-    ],
-    "imageUrl": "/uploads/forum/1750603009000-Screenshot_2025-06-22_150817.png",
-    "createdAt": "2025-06-22T14:36:49.001Z"
-  },
-  {
-    "id": 1750602852857,
+    "id": 1750613156350,
     "title": "test",
     "details": "test",
     "tags": [
       "test"
     ],
-    "imageUrl": null,
-    "createdAt": "2025-06-22T14:34:12.857Z"
+    "imageUrl": "/uploads/forum/1750613156349-Screenshot_2025-06-22_151210.png",
+    "createdAt": "2025-06-22T17:25:56.350Z",
+    "likes": 0,
+    "comments": []
   }
 ]
