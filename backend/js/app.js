@@ -8,21 +8,23 @@ const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const routes_1 = __importDefault(require("./routes"));
-const fs_1 = __importDefault(require("fs")); // forum
-const multer_1 = __importDefault(require("multer")); // forum
+const fs_1 = __importDefault(require("fs")); // forum data
+const multer_1 = __importDefault(require("multer")); // forum uploads
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // 1) Client‐JS (signup.js & login.js)
 app.use('/js/client/modules/auth', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'js', 'client', 'modules', 'auth')));
-// 2) Styles
-app.use('/styles', 
-// express.static(path.join(__dirname, '..', '..', 'frontend', 'styles'))
-app.use('/styles', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'styles'))));
-// 3) Images
+// 2) Front-end JS modules and utils
+app.use('/js', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'js')));
+// 3) Stylesheet
+app.use('/styles', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'styles')));
+// 4) Front-end HTML components
+app.use('/components', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'components')));
+// 5) Images
 app.use('/assets/images', express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'assets', 'images')));
-// 4) HTML-Dateien
+// 6) HTML pages
 app.use(express_1.default.static(path_1.default.join(__dirname, '..', '..', 'frontend', 'html')));
 // --- Forum Uploads statisch bereitstellen ---
 // URL: /uploads/forum/<filename>
@@ -77,7 +79,7 @@ app.post('/api/posts', upload.single('image'), (req, res) => {
     savePosts(posts);
     res.status(201).json(newPost);
 });
-// Typisierter Root-Handler
+// Typisierter Root-Handler für Index
 const serveIndex = (_req, res) => {
     res.sendFile(path_1.default.join(__dirname, '..', '..', 'frontend', 'html', 'index.html'));
 };

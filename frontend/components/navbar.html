@@ -1,13 +1,15 @@
+<!-- frontend/components/navbar.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center me-4" href="/index.html">
+    <!-- 1) Brand/Logo -->
+    <a class="navbar-brand me-4" href="/index.html">
       <div class="classmate-logo mb-0">
         <span class="text-warning">CLASS</span>
         <span class="text-success">MATE</span>
       </div>
     </a>
 
-    <!-- Toggler für mobile Ansicht -->
+    <!-- 2) Burger-Toggler (immer sichtbar auf Mobile) -->
     <button
       class="navbar-toggler ms-auto"
       type="button"
@@ -20,38 +22,49 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Nav-Links -->
+    <!-- 3) Collapse für Hauptnavigation + mobile User-Links -->
     <div class="collapse navbar-collapse" id="mainNavbar">
+      <!-- Deine Haupt-Links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="/dashboard.html">Dashboard</a></li>
         <li class="nav-item"><a class="nav-link" href="/tasks.html">Tasks</a></li>
         <li class="nav-item"><a class="nav-link" href="/progress.html">Progress</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/forum.html">Forum</a></li>
+        <li class="nav-item"><a class="nav-link" href="/forum.html">Forum</a></li>
         <li class="nav-item"><a class="nav-link" href="/feedback.html">Feedback</a></li>
         <li class="nav-item"><a class="nav-link" href="/gamification.html">Gamification</a></li>
       </ul>
 
-      <!-- User‐Dropdown -->
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link py-0 px-2"
-            href="#"
-            id="userDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="bi bi-person-circle fs-2 text-secondary"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="/profile.html">Profil</a></li>
-            <li><a class="dropdown-item" href="/settings.html">Einstellungen</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#" id="logoutButton">Abmelden</a></li>
-          </ul>
-        </li>
+      <!-- mobile-only: Profil, Einstellungen, Abmelden -->
+      <ul class="navbar-nav d-lg-none mt-3">
+        <li class="nav-item"><a class="nav-link" href="/profile.html">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="/settings.html">Einstellungen</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="#" id="logoutButton">Abmelden</a></li>
       </ul>
     </div>
+
+    <!-- 4) Desktop-only bleibt außen das Profil-Icon -->
+    <ul class="navbar-nav align-items-center ms-3 d-none d-lg-flex">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link py-0 px-2"
+          href="#"
+          id="userDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-person-circle fs-2 text-secondary"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end position-absolute"
+            style="top:100%; right:0; margin-top:0.25rem; z-index:2000;"
+            aria-labelledby="userDropdown"
+        >
+          <li><a class="dropdown-item" href="/profile.html">Profil</a></li>
+          <li><a class="dropdown-item" href="/settings.html">Einstellungen</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" id="logoutButton">Abmelden</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </nav>
