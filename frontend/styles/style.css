@@ -364,5 +364,15 @@ section {
   margin-top: 0.25rem;
 }
 
+/* Gamification Styles */
+.badge-image {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+  }
+  .badge-image:hover {
+    transform: scale(1.05);
+  }
 
   

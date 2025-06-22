@@ -143,6 +143,14 @@ app.post('/api/feedback', (req: Request, res: Response): void => {
   res.status(201).json({ message: 'Feedback gespeichert' });
 });
 
+// --- Dummy-Gamification-Route für Frontend-Tests ---
+app.get('/api/gamification/stats', (_req: Request, res: Response) => {
+  res.json({
+    points: 450,
+    level: 5
+  });
+});
+
 // ==== Healthcheck & Start ====
 app.use('/api', authRoutes);
 app.get('/api/health', (_req, res) => {

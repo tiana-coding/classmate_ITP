@@ -105,6 +105,13 @@ app.post('/api/feedback', (req, res) => {
     fs_1.default.writeFileSync(filePath, JSON.stringify(feedbackList, null, 2));
     res.status(201).json({ message: 'Feedback gespeichert' });
 });
+// --- Dummy-Gamification-Route für Frontend-Tests ---
+app.get('/api/gamification/stats', (_req, res) => {
+    res.json({
+        points: 450,
+        level: 5
+    });
+});
 // ==== Healthcheck & Start ====
 app.use('/api', routes_1.default);
 app.get('/api/health', (_req, res) => {

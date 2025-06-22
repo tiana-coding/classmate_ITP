@@ -29,9 +29,7 @@ export function getBadges(currentLevel: number): Badge[] {
             image:       `${basePath}${name}.png`,
             lockedImage: `${basePath}${name}_locked.png`,
             unlocked,
-            unlockMessage: unlocked
-                ? 'Freigeschaltet!'
-                : `Erreiche Level ${level}, um dieses Abzeichen freizuschalten`,
+            unlockMessage: `Erreiche Level ${level}, um dieses Abzeichen freizuschalten`
         };
     });
 }
