@@ -1,0 +1,21 @@
+<div class="px-4 py-3">
+  <h2>Aufgabenverwaltung</h2>
+  <div class="mb-3">
+    <label class="me-2">Klasse:</label>
+    <select [(ngModel)]="selectedClass" (change)="onClassChange()" class="form-select w-auto d-inline-block">
+      <option *ngFor="let c of classes" [value]="c">{{c}}</option>
+    </select>
+  </div>
+
+  <app-task-stats></app-task-stats>
+
+  <app-task-list
+    [tasks]="tasks"
+    (toggleComplete)="onToggle($event)"
+    (delete)="onDelete($event)">
+  </app-task-list>
+
+  <a *ngIf="auth.isAdmin()" routerLink="upload" class="btn btn-secondary mt-4">
+    Upload / Edit Aufgaben
+  </a>
+</div>

@@ -1,0 +1,16 @@
+<div class="list-group-item d-flex justify-content-between align-items-center" [class.active]="task.completed">
+  <div>
+    <input
+      type="checkbox"
+      class="form-check-input me-2"
+      [checked]="task.completed"
+      (change)="toggle.emit(task)">
+    <span [class.text-decoration-line-through]="task.completed">{{ task.title }}</span>
+    <span class="badge bg-info ms-2">{{ task.points }}p</span>
+  </div>
+  <div>
+    <a *ngIf="task.documentUrl" [href]="task.documentUrl" target="_blank" class="btn btn-sm btn-outline-primary me-2">PDF</a>
+    <a *ngIf="task.externalUrl" [href]="task.externalUrl" target="_blank" class="btn btn-sm btn-outline-secondary me-2">Link</a>
+    <button *ngIf="auth.isAdmin()" class="btn btn-sm btn-outline-danger" (click)="delete.emit(task.id)">Löschen</button>
+  </div>
+</div>
