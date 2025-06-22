@@ -7,32 +7,43 @@
 
   <div class="container py-4">
     <div class="row">
-      
-    <!-- Fortschrittsleiste -->
-    <div class="col-12 mb-4">
-        <div class="card bg-white text-center">
+        <!-- Linke Spalte: Fortschritt -->
+        <div class="col-md-6 mb-4">
+            <div class="card bg-white text-center h-100">
             <div class="card-body">
-            <h5 class="card-title">Level-Fortschritt</h5>
-            <h6 id="levelDisplay" class="mb-3">Level 1</h6> 
-            <div class="progress" style="height: 28px;">
+                <h5 class="card-title">Level-Fortschritt</h5>
+                <h6 id="levelDisplay" class="mb-3">Level 1</h6>
+                <div class="progress" style="height: 28px;">
                 <div id="levelProgress"
                     class="progress-bar bg-warning text-dark fw-bold d-flex align-items-center justify-content-center"
                     style="width: 0%">
-                0%
+                    0%
                 </div>
-            </div>
-            <small class="text-muted d-block mt-2">
+                </div>
+                <small class="text-muted d-block mt-2">
                 Noch <span id="pointsToNextLevel">100</span> Punkte bis Level 
                 <span id="nextLevel">2</span>
-            </small>
+                </small>
 
-            <!-- Diese beiden sind fürs JS notwendig -->
-            <div id="totalPoints" hidden></div>
-            <span id="currentLevel" hidden></span>
+                <!-- Unsichtbar für JS -->
+                <div id="totalPoints" hidden></div>
+                <span id="currentLevel" hidden></span>
+            </div>
             </div>
         </div>
-    </div>
 
+        <!-- Rechte Spalte: Leaderboard -->
+        <div class="col-md-6 mb-4">
+            <div class="card bg-white h-100">
+            <div class="card-body">
+                <h5 class="card-title">Rangliste</h5>
+                <ol id="leaderboardList" class="list-group">
+                <!-- Dynamisch per JS -->
+                </ol>
+            </div>
+            </div>
+        </div>
+</div>
       <!-- Achievements -->
       <div class="col-12">
         <div class="card bg-white">
@@ -44,7 +55,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 

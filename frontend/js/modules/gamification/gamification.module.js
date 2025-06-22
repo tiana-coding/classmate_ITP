@@ -1,6 +1,8 @@
 import { getBadges } from './badges/badges.module.js';
+import { renderLeaderboard } from './leaderboard/leaderboard.module.js';
 document.addEventListener('DOMContentLoaded', () => {
     loadGamificationData();
+    renderLeaderboard();
 });
 async function loadGamificationData() {
     try {

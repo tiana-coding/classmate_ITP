@@ -112,6 +112,24 @@ app.get('/api/gamification/stats', (_req, res) => {
         level: 5
     });
 });
+// --- Leaderboard ----
+app.get('/api/gamification/leaderboard', (_req, res) => {
+    const filePath = path_1.default.join(__dirname, '..', 'data', 'userStats.json');
+    fs_1.default.readFile(filePath, 'utf-8', (err, rawData) => {
+        if (err) {
+            console.error('Fehler beim Lesen der Rangliste:', err);
+            return res.status(500).json({ error: 'Interner Serverfehler' });
+        }
+        try {
+            const data = JSON.parse(rawData); // rawData ist vom Typ string
+            res.json(data);
+        }
+        catch (parseError) {
+            console.error('Fehler beim Parsen der Rangliste:', parseError);
+            res.status(500).json({ error: 'Fehler beim Parsen der Rangliste' });
+        }
+    });
+});
 // ==== Healthcheck & Start ====
 app.use('/api', routes_1.default);
 app.get('/api/health', (_req, res) => {
