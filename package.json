@@ -7,7 +7,7 @@
     "start": "node backend/js/app.js",
     "dev": "ts-node-dev --respawn --transpile-only --project backend/tsconfig.json backend/ts/app.ts",
     "build:backend": "tsc -p backend/tsconfig.json",
-    "build:frontend":"tsc -p frontend/tsconfig.json",
+    "build:frontend": "tsc -p frontend/tsconfig.json",
     "build": "npm run build:frontend && npm run build:backend"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.2.8",
     "@angular/router": "^19.2.8",
     "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.9",
     "@types/bcrypt": "^5.0.2",
+    "@types/bootstrap": "^5.2.10",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
